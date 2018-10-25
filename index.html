@@ -28,7 +28,6 @@
                     </option>
                 </select>
 
-                <span>Sélectionné : {{ selected }}</span>
 
             </div>
             <div class="col-4">
@@ -53,27 +52,24 @@
                         </label>
                     </div>
                 </div>
-                <span>Noms cochés : {{ checkedNames }}</span>
             </div>
         </div>
 
         <div v-for="result in resultliste">
-            <span>Test : {{result}}</span>
             <div class="card">
-                <div class="card-header">
-                    User name
-                    <a href="#" class="btn btn-primary">Projet Github</a>
-                </div>
+                <h2 class="card-header">
+                    {{result[0].html_url.split("/")[3]}}
+                    <a :href="'https://github.com/' + result[0].html_url.split('/')[3] + '/' + selected" class="btn btn-primary">Projet Github</a>
+                </h2>
                 <div class="card-body">
                     <div>
-                        <h1>Latest Vue.js Commits</h1>
                         <ul>
-                            <li v-for="record in commits">
-                                <a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a>
-                                - <span class="message">{{ record.commit.message | truncate }}</span><br>
-                                by <span class="author"><a :href="record.author.html_url" target="_blank">{{
+                            <li v-for="record in result">
+                                <img :src="record.committer.avatar_url" width="50" height="50">
+                                - <a class="message" :href="record.html_url" target="_blank">{{ record.commit.message | truncate }}</a>
+                                par <span class="author"><a :href="record.author.html_url" target="_blank">{{
                                         record.commit.author.name }}</a></span>
-                                at <span class="date">{{ record.commit.author.date | formatDate }}</span>
+                                le <span class="date">{{ record.commit.author.date | formatDate }}</span>
                             </li>
                         </ul>
                     </div>

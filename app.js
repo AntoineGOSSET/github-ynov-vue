@@ -71,7 +71,8 @@ var demo = new Vue({
     projets: [
     { value: 'github-ynov-vue' },
     { value: 'dev_mobile' },
-    { value: 'Airbnb_exercice' }
+    { value: 'Airbnb_exercice' },
+    { value: 'Shifumi'}
     ],
 
     users: [
@@ -80,7 +81,8 @@ var demo = new Vue({
     { id:2 ,value: 'raphaelCharre' },
     { id:3 ,value: 'mathiasLoiret' },
     { id:4 ,value: 'AntoineGOSSET' },
-    { id:5 ,value: 'etienneYnov' }
+    { id:5 ,value: 'etienneYnov' },
+    { id:6 ,value: 'KevinPautonnier'}
     ],
 
     checkedNames: ['AntoineGOSSET'],  
@@ -113,17 +115,20 @@ var demo = new Vue({
         var self = this
         this.resultliste = []
         this.checkedNames.forEach(function(name) {
-            console.log(name);
-            xhr.open('GET', apiURL + name + '/' + self.selected + '/commits?')
-            xhr.onload = function () {
-                self.commits = JSON.parse(xhr.responseText)
-                console.log(self.commits[0].html_url)
-                console.log(self.commits)
-            }
-            xhr.send()
-            self.resultliste.push(this.commits)
+          console.log(name);
+          xhr.open('GET', apiURL + name + '/' + self.selected + '/commits?', false)
+          xhr.onload = function () {
+            self.commits = JSON.parse(xhr.responseText)
+            console.log("URL REQUEST:" + self.commits[0].html_url)
+            console.log("RESULT:" + self.commits)  
+            console.log("Commit :" + self.commits)
+            self.resultliste.push(self.commits)
+            console.log("LIST RESULT:" + self.resultliste)
+          }
+          
+          xhr.send() 
           });
-        console.log(this.resultliste)
+          
         
         
 
