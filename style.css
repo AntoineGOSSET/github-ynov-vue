@@ -1,4 +1,11 @@
-
+@font-face {
+  font-family: 'code_bold'; /*a name to be used later*/
+  src: url('font/CODE\ Bold.otf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'code_light'; /*a name to be used later*/
+  src: url('font/CODE\ Light.otf'); /*URL to font*/
+}
 #demo {
     font-family: 'Helvetica', Arial, sans-serif;
   }
@@ -6,10 +13,17 @@ a {
     text-decoration: none;
     color: #e94e6d;
   }
+#gittitle{
+    margin-left: 32px;
+    font-family: 'code_bold' !important;
+    font-size: 3rem !important
+  }
 h1{
   display: inline;
-  margin: 32px
+  font-family: 'code_light' !important
 }
+
+
 li {
     line-height: 1.5em;
     margin-bottom: 20px;
@@ -42,7 +56,9 @@ li {
 
 .Paramlabel{
   height: 30%;
-  margin-top: 10px
+  margin-top: 10px;
+  display: block;
+  text-align: center;
 }
 
 #reportrange{
@@ -72,6 +88,9 @@ li {
   color: #5a6268
 }
 
+#br-card-header{
+  display: none
+}
 
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
@@ -95,5 +114,8 @@ li {
   }
   h1{
     display: none
+  }
+  #br-card-header{
+    display: initial
   }
 }
