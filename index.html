@@ -15,9 +15,12 @@
 <body>
     <div id="demo">
         <nav class="navbar navbar-light bg-light">
+                
             <a class="navbar-brand" href="#">
-                <h1>Application Github Ynov</h1>
-            </a>
+                <img src="logo.png" width="70px" height="auto">
+                
+            
+            <h1>Application Github Ynov</h1></a>
         </nav>
         <div class="row" id="formulaire">
             
@@ -27,11 +30,11 @@
             <div class="col">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <p class="Paramlabel">Choix des comptes</p>
+                    <p>Choix des comptes</p>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <div class="form-check" v-for="user in users">
-                        <input class="form-check-input" type="checkbox" v-model="checkedNames" v-on:change="fetchData"
+                        <input class="form-check-input" type="checkbox" v-model="checkedNames"
                             v-bind:value="user.value">
                         <label class="form-check-label" >
                             {{user.value}}
@@ -43,23 +46,30 @@
             <div class="col">
                 <label for="periodchoice" class="Paramlabel">Choix de la période</label>
                 <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                    <i class="fa fa-calendar"></i>&nbsp;
-                    <span class="Paramlabel" ></span> <i class="Paramlabel" class="fa fa-caret-down"></i>
+                    <i class="fa fa-calendar"></i>
+                    <span  ></span> <i  class="fa fa-caret-down"></i>
                 </div>
             </div>
 
             <div class="col">
                 <label for="projectchoice" class="Paramlabel">Choix du projet</label>
                 <div>
-                    <select class="form-control btn-primary" id="Formcontroller" v-model="selected" v-on:change="fetchData" data-live-search=”true”>
-                        <option v-for="projet in projets" v-bind:value="projet.value" class="Paramlabel">
+                    <select class="form-control btn-primary" id="Formcontroller" v-model="selected"  data-live-search=”true”>
+                        <option v-for="projet in projets" v-bind:value="projet.value">
                             {{ projet.value }}
                         </option>
                     </select>
                 </div>
                 
             </div>
-            
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col">
+                <button type="submit" class="btn btn-secondary" v-on:click="fetchData" id="submit-button">Valider</button>
+            </div>
+            <div class="col-2"></div>
         </div>
 
         <div v-for="result in resultliste">
@@ -72,7 +82,7 @@
                     <div>
                         <ul>
                             <li v-for="record in result">
-                                <img :src="record.committer.avatar_url" width="50" height="50">
+                                <img :src="record.author.avatar_url" width="50" height="50">
                                 - <a class="message" :href="record.html_url" target="_blank">{{ record.commit.message | truncate }}</a>
                                 par <span class="author"><a :href="record.author.html_url" target="_blank">{{
                                         record.commit.author.name }}</a></span>

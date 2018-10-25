@@ -1,13 +1,20 @@
+
 #demo {
     font-family: 'Helvetica', Arial, sans-serif;
   }
 a {
     text-decoration: none;
-    color: #f66;
+    color: #e94e6d;
   }
+h1{
+  display: inline;
+  margin: 32px
+}
 li {
     line-height: 1.5em;
     margin-bottom: 20px;
+    list-style-type: none;
+
   }
 .author, .date {
     font-weight: bold;
@@ -18,10 +25,13 @@ li {
   height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #e94e6d;
+  border-color: #e94e6d;
 }
-
+.btn-primary{
+  background-color: #23b2a4 !important;
+  border-color: #23b2a4 !important;
+}
 .reportrange{
   height: 50%;
 }
@@ -29,38 +39,61 @@ li {
   height: 50%;
 }
 
-/*.dropdown-menu{
-  width: 100vw
-}*/
+
 .Paramlabel{
-  height: 30%
+  height: 30%;
+  margin-top: 10px
 }
 
 #reportrange{
   border-radius: .25rem
 }
 
+.card{
+  margin-top: 20px
+}
+
+#submit-button{
+  margin-top: 10px;
+  width: 100%
+}
+
+.ranges li.active{
+  background-color: #23b2a4 !important
+}
+.daterangepicker td.in-range{
+  background-color: rgba(211, 211, 211, 0.418) !important
+}
+.daterangepicker td.active, .daterangepicker td.active:hover{
+  background-color: #e94e6d !important
+}
+
+.card-body a{
+  color: #5a6268
+}
+
+
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
-  .Paramlabel{
-    font-size: 15px
-  }
-  #Formcontroller{
-    font-size: 15px
+  #dropdownMenuButton {
+    width: 100vw;
   }
 }
 
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 600px) {
-  .Paramlabel{
-    font-size: 10px
-  }
-  #Formcontroller{
-    font-size: 10px
+  #dropdownMenuButton {
+    width: 100vw;
   }
 
   h1{
     font-size: 1.5rem !important
   }
 
+  #reportrange{
+    width: 100vw !important
+  }
+  h1{
+    display: none
+  }
 }

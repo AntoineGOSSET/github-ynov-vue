@@ -83,19 +83,21 @@ var demo = new Vue({
 
   methods: {
     fetchData: function () {
-      console.log(startDateReturn)
-      console.log(endDateReturn)
       var xhr = new XMLHttpRequest()
       var self = this
       this.resultliste = []
       this.checkedNames.forEach(function(name) {
+        try{
         xhr.open('GET', apiURL + name + '/' + self.selected + '/commits?since='+ startDateReturn.format('YYYY-DD-MM') +'&until=' + endDateReturn.format('YYYY-DD-MM'), false)
+        }
+        catch(error){
+          console.error(error);
+        }
         xhr.onload = function () {
           self.commits = JSON.parse(xhr.responseText)
           self.resultliste.push(self.commits)
         }
-        
-        xhr.send() 
+        xhr.send()
       });
     }
   }
