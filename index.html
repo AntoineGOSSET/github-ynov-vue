@@ -15,44 +15,51 @@
 <body>
     <div id="demo">
         <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">Application Github Ynov</a>
+            <a class="navbar-brand" href="#">
+                <h1>Application Github Ynov</h1>
+            </a>
         </nav>
-        <div class="row">
-            <div class="col-4">
-                <label for="projectchoice">Choix du projet</label>
+        <div class="row" id="formulaire">
+            
 
+            
 
-                <select class="form-control" id="Formcontroller" v-model="selected" v-on:change="fetchData">
-                    <option v-for="projet in projets" v-bind:value="projet.value">
-                        {{ projet.value }}
-                    </option>
-                </select>
-
-
-            </div>
-            <div class="col-4">
-                <label for="periodchoice">Choix de la période</label>
-                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                    <i class="fa fa-calendar"></i>&nbsp;
-                    <span></span> <i class="fa fa-caret-down"></i>
-                </div>
-            </div>
-
-            <div class="col-4">
+            <div class="col">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Choix des comptes
+                    <p class="Paramlabel">Choix des comptes</p>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <div class="form-check" v-for="user in users">
                         <input class="form-check-input" type="checkbox" v-model="checkedNames" v-on:change="fetchData"
                             v-bind:value="user.value">
-                        <label class="form-check-label">
+                        <label class="form-check-label" >
                             {{user.value}}
                         </label>
                     </div>
                 </div>
             </div>
+
+            <div class="col">
+                <label for="periodchoice" class="Paramlabel">Choix de la période</label>
+                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span class="Paramlabel" ></span> <i class="Paramlabel" class="fa fa-caret-down"></i>
+                </div>
+            </div>
+
+            <div class="col">
+                <label for="projectchoice" class="Paramlabel">Choix du projet</label>
+                <div>
+                    <select class="form-control btn-primary" id="Formcontroller" v-model="selected" v-on:change="fetchData" data-live-search=”true”>
+                        <option v-for="projet in projets" v-bind:value="projet.value" class="Paramlabel">
+                            {{ projet.value }}
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+            
         </div>
 
         <div v-for="result in resultliste">
@@ -74,11 +81,8 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -97,7 +101,5 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-
 </body>
-
 </html>
