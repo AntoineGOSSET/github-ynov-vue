@@ -27,7 +27,6 @@ $(function() {
 });
 
 var apiURL = 'https://api.github.com/repos/'
-  
 var demo = new Vue({
 
   el: '#demo',
@@ -37,14 +36,12 @@ var demo = new Vue({
     currentBranch: 'master',
     commits: null,
     selected: 'github-ynov-vue',
-
     projets: [
     { value: 'github-ynov-vue' },
     { value: 'dev_mobile' },
     { value: 'Airbnb_exercice' },
     { value: 'Shifumi'}
     ],
-
     users: [
     { id:0 ,value: 'Killy85' },
     { id:1 ,value: 'Nair0fl' },
@@ -55,16 +52,10 @@ var demo = new Vue({
     { id:6 ,value: 'KevinPautonnier'},
     { id:7 ,value: 'AlexDesvallees'}
     ],
-
     checkedNames: [],  
-      
     resultliste: [],
-
     startDateReturn: null,
     endDateReturn: null,
-
-    
-
   },
 
   watch: {
@@ -95,7 +86,10 @@ var demo = new Vue({
         }
         xhr.onload = function () {
           self.commits = JSON.parse(xhr.responseText)
-          self.resultliste.push(self.commits)
+          console.log(self.commits[0])
+          if (self.commits[0]){
+            self.resultliste.push(self.commits)
+          } 
         }
         xhr.send()
       });
