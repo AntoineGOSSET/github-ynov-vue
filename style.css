@@ -24,7 +24,7 @@ h1{
 }
 
 
-li {
+.li-result {
     line-height: 1.5em;
     margin-bottom: 20px;
     list-style-type: none;
@@ -53,14 +53,22 @@ li {
   height: 50%;
 }
 
+.erreurliste{
+  display: inline
+}
 
+.alert{
+  margin-top: 10px
+}
 .Paramlabel{
   height: 30%;
   margin-top: 10px;
   display: block;
   text-align: center;
 }
-
+#checkAllLabel{
+  font-weight: bold
+}
 #reportrange{
   border-radius: .25rem
 }
@@ -92,14 +100,28 @@ li {
   display: none
 }
 
-/* On screens that are 992px or less, set the background color to blue */
+.octicon{
+  display: none
+}
+
+.form-check{
+  margin-bottom: 4px;
+  margin-left: 4px
+}
+
+/* On screens that are 992px or less*/
 @media screen and (max-width: 992px) {
   #dropdownMenuButton {
     width: 100vw;
   }
+
+  .dropdown-menu{
+    transform: translate3d(0px, 78px, 0px);
+    width: 50vw;
+  }
 }
 
-/* On screens that are 600px or less, set the background color to olive */
+/* On screens that are 600px or less*/
 @media screen and (max-width: 600px) {
   #dropdownMenuButton {
     width: 100vw;
@@ -118,4 +140,12 @@ li {
   #br-card-header{
     display: initial
   }
+
+  .dropdown-menu{
+    transform: translate3d(0px, 78px, 0px);
+    width: 98vw;
+    }
 }
+
+
+

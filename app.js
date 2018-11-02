@@ -26,6 +26,7 @@ $(function() {
     
 });
 
+
 var apiURL = 'https://api.github.com/repos/'
 var demo = new Vue({
 
@@ -43,17 +44,20 @@ var demo = new Vue({
     { value: 'Shifumi'}
     ],
     users: [
-    { id:0 ,value: 'Killy85' },
-    { id:1 ,value: 'Nair0fl' },
-    { id:2 ,value: 'raphaelCharre' },
-    { id:3 ,value: 'mathiasLoiret' },
-    { id:4 ,value: 'AntoineGOSSET' },
-    { id:5 ,value: 'etienneYnov' },
-    { id:6 ,value: 'KevinPautonnier'},
-    { id:7 ,value: 'AlexDesvallees'}
+    'Killy85',
+    'Nair0fl',
+    'raphaelCharre' ,
+    'mathiasLoiret' ,
+    'AntoineGOSSET' ,
+    'etienneYnov' ,
+    'KevinPautonnier',
+    'AlexDesvallees',
+    'Grigusky',
+    'gmeunier'
     ],
     checkedNames: [],  
     resultliste: [],
+    erreurliste:[],
     startDateReturn: null,
     endDateReturn: null,
   },
@@ -68,7 +72,7 @@ var demo = new Vue({
       return newline > 0 ? v.slice(0, newline) : v
     },
     formatDate: function (v) {
-      return v.replace(/T|Z/g, ' ')
+      return moment(v).format('DD-MM-YYYY')
     }
   },
 
@@ -77,17 +81,49 @@ var demo = new Vue({
       var xhr = new XMLHttpRequest()
       var self = this
       this.resultliste = []
+      this.erreurliste = []
       this.checkedNames.forEach(function(name) {
-        
-        xhr.open('GET', apiURL + name + '/' + self.selected + '/commits?since='+ startDateReturn.format('YYYY-DD-MM') +'&until=' + endDateReturn.format('YYYY-DD-MM'), false)
+        xhr.open('GET', apiURL + name + '/' + self.selected + '/commits?since='+ startDateReturn.format('YYYY-MM-DD') +'&until=' + endDateReturn.format('YYYY-MM-DD'), false)
         xhr.onload = function () {
           self.commits = JSON.parse(xhr.responseText)
           if (self.commits[0]){
             self.resultliste.push(self.commits)
-          } 
+          }
+          else{
+            self.erreurliste.push(name)
+          }
         }
         xhr.send()
       });
+    },
+
+    fetchReadMe: function(name){
+      var xhr = new XMLHttpRequest()
+      var self = this
+      
+      xhr.open('GET', apiURL + name + '/' + self.selected + '/readme', false)
+      xhr.setRequestHeader('Accept' , 'application/vnd.github.VERSION.html')
+      xhr.onload = function () {
+        if(xhr.status == 404){
+          self.readme = "Aucun Read Me trouvé pour ce projet"
+        }
+        else{
+          self.readme = xhr.responseText
+        }
+        document.getElementById("readme-modal").innerHTML = self.readme
+      }
+      xhr.send()
+    },
+
+    checkAll: function(){
+      var self = this
+
+      if (this.checkedNames.length == this.users.length){
+        this.checkedNames = []
+      }
+      else{
+        this.checkedNames = this.users
+      }
     }
   }
 })
