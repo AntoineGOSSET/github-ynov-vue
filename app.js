@@ -72,7 +72,7 @@ var demo = new Vue({
       return newline > 0 ? v.slice(0, newline) : v
     },
     formatDate: function (v) {
-      return moment(v).format('DD-MM-YYYY')
+      return moment(v).format('DD-MM-YYYY à h:mm')
     }
   },
 
