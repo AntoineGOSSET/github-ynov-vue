@@ -30,6 +30,7 @@ Dans certains cas la requête ne retourne pas d'avatar pour la personne, une ima
 ## :iphone: Impression d'écran :
 
 <br/>
+
 ### Version PC
 
 ![alt text](https://raw.githubusercontent.com/AntoineGOSSET/github-ynov-vue/master/screenshot/pc.PNG)
