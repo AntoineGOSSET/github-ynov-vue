@@ -109,6 +109,10 @@ h1{
   margin-left: 4px
 }
 
+.dropdown-menu{
+  transform: translate3d(20px, 84px, 0px) !important;
+}
+
 /* On screens that are 992px or less*/
 @media screen and (max-width: 992px) {
   #dropdownMenuButton {
@@ -116,7 +120,6 @@ h1{
   }
 
   .dropdown-menu{
-    transform: translate3d(0px, 78px, 0px);
     width: 50vw;
   }
 }
@@ -134,15 +137,12 @@ h1{
   #reportrange{
     width: 100vw !important
   }
-  h1{
-    display: none
-  }
+
   #br-card-header{
     display: initial
   }
 
   .dropdown-menu{
-    transform: translate3d(0px, 78px, 0px);
     width: 98vw;
     }
 }
